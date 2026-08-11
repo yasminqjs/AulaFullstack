@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.retangulo-topo {
+  background-color: #cfe3f0;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.retangulo-topo h1 {
+  font-size: 28px;
+  color: #0b3d5c;
+}
+
+.retangulo-topo p {
+  font-size: 16px;
+  color: #0b3d5c;
+  margin-top: 5px;
+}
+
+.conteudo {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.conteudo h2 {
+  font-size: 18px;
+  color: #0b3d5c;
+  margin-bottom: 10px;
+}
+
+.conteudo p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.conteudo ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.conteudo li {
+  margin-bottom: 6px;
+}
