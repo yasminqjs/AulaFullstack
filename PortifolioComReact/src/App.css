@@ -1,0 +1,228 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================
+   BARRA DE PROGRESSO
+========================= */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 3px;
+
+  background: var(--purple);
+
+  z-index: 9999;
+
+  transition: width 0.1s linear;
+}
+
+/* =========================
+   INTERAÇÕES REACT
+========================= */
+
+.skill-controls {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 25px;
+}
+
+.skill-control {
+  padding: 8px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  background: white;
+
+  color: var(--gray);
+
+  font-family: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.skill-control:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+
+  transform: translateY(-2px);
+}
+
+.skill-control.active {
+  background: var(--purple);
+  border-color: var(--purple);
+
+  color: white;
+}
+
+/* =========================
+   HABILIDADES EM LISTA
+========================= */
+
+.skill-list.compact {
+  max-width: 750px;
+}
+
+/* =========================
+   HABILIDADES EM CARDS
+========================= */
+
+.skill-list.cards {
+  max-width: 800px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(150px, 1fr));
+
+  gap: 12px;
+}
+
+.skill-list.cards span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 70px;
+
+  text-align: center;
+}
+
+/* =========================
+   FOTO
+========================= */
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+/* =========================
+   EXPERIÊNCIAS INTERATIVAS
+========================= */
+
+.experience-card {
+  cursor: default;
+}
+
+.experience-card.selected {
+  background: rgba(121, 83, 182, 0.04);
+
+  border-radius: 8px;
+
+  padding: 20px;
+
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.experience-card.selected h3 {
+  color: var(--purple);
+}
+
+.experience-extra {
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    margin 0.25s ease;
+}
+
+.experience-extra.show {
+  max-height: 200px;
+
+  opacity: 1;
+
+  margin-top: 15px;
+}
+
+.experience-button {
+  margin-top: 15px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--purple);
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.experience-button:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ANIMAÇÃO DAS SEÇÕES
+========================= */
+
+.animate-section {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.animate-section.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 700px) {
+  .experience-card.selected {
+    margin-left: 0;
+    margin-right: 0;
+
+    padding: 15px;
+  }
+
+  .skill-list.cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .skill-controls {
+    flex-wrap: wrap;
+  }
+
+  .skill-list.cards {
+    grid-template-columns: 1fr;
+  }
+}

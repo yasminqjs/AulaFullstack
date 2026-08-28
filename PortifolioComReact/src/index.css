@@ -1,0 +1,622 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --purple: #7953b6;
+  --purple-light: #a68ad1;
+
+  --black: #17151a;
+  --gray: #6f6a74;
+
+  --background: #faf9fb;
+  --white: #ffffff;
+
+  --border: #e5e0e8;
+
+  --max: 1050px;
+
+  font-family: "DM Sans", sans-serif;
+
+  color: var(--black);
+  background: var(--background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(121, 83, 182, 0.08),
+      transparent 30%
+    ),
+    var(--background);
+
+  color: var(--black);
+
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+/* ================= HEADER ================= */
+
+header {
+  width: min(calc(100% - 48px), var(--max));
+
+  height: 80px;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom:
+    1px solid rgba(121, 83, 182, 0.08);
+}
+
+.logo {
+  color: var(--purple);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+
+  font-size: 15px;
+
+  letter-spacing: -1px;
+}
+
+nav {
+  display: flex;
+
+  gap: 30px;
+}
+
+nav a {
+  position: relative;
+
+  color: var(--gray);
+
+  font-size: 13px;
+
+  transition: color 0.2s ease;
+}
+
+nav a::after {
+  content: "";
+
+  position: absolute;
+
+  width: 0;
+  height: 2px;
+
+  left: 0;
+  bottom: -6px;
+
+  background: var(--purple);
+
+  transition: width 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--purple);
+}
+
+nav a.active::after {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  width: min(calc(100% - 48px), var(--max));
+
+  min-height: 500px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 220px;
+
+  align-items: center;
+
+  column-gap: 70px;
+
+  padding: 50px 0 70px;
+}
+
+.hero-text {
+  text-align: left;
+}
+
+h1 {
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(64px, 9vw, 100px);
+
+  line-height: 0.92;
+
+  letter-spacing: -5px;
+
+  margin-bottom: 25px;
+}
+
+h1 span {
+  color: var(--purple);
+}
+
+.description {
+  max-width: 650px;
+
+  color: var(--gray);
+
+  font-size: 15px;
+}
+
+/* ================= FOTO ================= */
+
+.foto {
+  width: 220px;
+  height: 220px;
+
+  padding: 7px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      rgba(166, 138, 209, 0.3)
+    );
+
+  box-shadow:
+    0 15px 40px rgba(121, 83, 182, 0.18);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.foto:hover {
+  transform: translateY(-5px) rotate(2deg);
+
+  box-shadow:
+    0 20px 45px rgba(121, 83, 182, 0.25);
+}
+
+/* ================= SEÇÕES ================= */
+
+.section {
+  width: min(calc(100% - 48px), var(--max));
+
+  margin: auto;
+
+  padding: 65px 0;
+
+  text-align: center;
+}
+
+.section-number {
+  color: var(--purple);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  margin-bottom: 25px;
+}
+
+/* ================= SOBRE ================= */
+
+.text {
+  max-width: 680px;
+
+  margin: auto;
+
+  color: var(--gray);
+
+  font-size: 14px;
+}
+
+.text p + p {
+  margin-top: 13px;
+}
+
+/* ================= EXPERIÊNCIA ================= */
+
+.experience {
+  max-width: 850px;
+
+  margin: auto;
+}
+
+.experience article {
+  display: grid;
+
+  grid-template-columns: 180px 1fr;
+
+  gap: 45px;
+
+  padding-bottom: 35px;
+
+  margin-bottom: 35px;
+
+  text-align: left;
+
+  border-bottom:
+    1px solid rgba(121, 83, 182, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.experience article:hover {
+  transform: translateX(5px);
+}
+
+.experience article:last-child {
+  margin-bottom: 0;
+
+  padding-bottom: 0;
+
+  border-bottom: none;
+}
+
+.date {
+  color: #8b858e;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  padding-top: 5px;
+
+  text-align: right;
+}
+
+h3 {
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 21px;
+
+  margin-bottom: 2px;
+}
+
+.company {
+  color: var(--purple);
+
+  font-size: 13px;
+
+  margin-bottom: 13px;
+}
+
+.experience article p:last-child {
+  color: var(--gray);
+
+  font-size: 14px;
+
+  max-width: 650px;
+}
+
+/* ================= HABILIDADES ================= */
+
+.skill-list {
+  max-width: 800px;
+
+  margin: auto;
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.skill-list span {
+  border: 1px solid #dcd6e2;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  border-radius: 6px;
+
+  padding: 9px 15px;
+
+  font-size: 13px;
+
+  opacity: 0;
+
+  animation: appear 0.4s forwards;
+
+  transition: all 0.2s ease;
+}
+
+.skill-list span:hover {
+  border-color: var(--purple-light);
+
+  color: var(--purple);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(121, 83, 182, 0.1);
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ================= FORMAÇÃO ================= */
+
+.education-content {
+  max-width: 750px;
+
+  margin: auto;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 70px;
+
+  text-align: left;
+}
+
+.education-content h2 {
+  font-family: "Space Grotesk", sans-serif;
+
+  color: var(--black);
+
+  font-size: 38px;
+
+  line-height: 1.1;
+
+  margin: 5px 0;
+}
+
+.small {
+  color: var(--purple);
+
+  font-size: 12px;
+}
+
+.institution {
+  color: var(--gray);
+
+  font-size: 14px;
+}
+
+.semester {
+  color: var(--gray);
+
+  font-size: 13px;
+
+  padding-left: 30px;
+
+  border-left:
+    2px solid rgba(121, 83, 182, 0.25);
+}
+
+/* ================= CONTATO ================= */
+
+.contact {
+  width: min(calc(100% - 48px), var(--max));
+
+  margin: auto;
+
+  padding: 65px 0;
+
+  text-align: center;
+}
+
+.contact .section-number {
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.linkedin-button {
+  display: inline-block;
+
+  padding: 9px 17px;
+
+  border: 1px solid var(--purple);
+
+  border-radius: 5px;
+
+  background: var(--white);
+
+  color: var(--purple);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+}
+
+.linkedin-button:hover {
+  background: var(--purple);
+
+  color: white;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(121, 83, 182, 0.2);
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  width: min(calc(100% - 48px), var(--max));
+
+  margin: auto;
+
+  padding: 25px 0;
+
+  border-top:
+    1px solid rgba(121, 83, 182, 0.1);
+
+  display: flex;
+
+  justify-content: center;
+
+  color: #9a949e;
+
+  font-size: 11px;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+@media (max-width: 700px) {
+  header {
+    justify-content: center;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  nav {
+    gap: 16px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    justify-items: center;
+
+    text-align: center;
+
+    row-gap: 35px;
+
+    padding-top: 50px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .foto {
+    width: 180px;
+    height: 180px;
+  }
+
+  .experience article {
+    grid-template-columns: 1fr;
+
+    gap: 5px;
+
+    text-align: center;
+  }
+
+  .date {
+    text-align: center;
+  }
+
+  .education-content {
+    flex-direction: column;
+
+    gap: 20px;
+
+    text-align: center;
+  }
+
+  .semester {
+    padding-left: 0;
+
+    border-left: none;
+  }
+}
+
+@media (max-width: 500px) {
+  header,
+  .hero,
+  .section,
+  .contact,
+  footer {
+    width: calc(100% - 32px);
+  }
+
+  header {
+    height: auto;
+
+    min-height: 70px;
+
+    padding: 15px 0;
+  }
+
+  nav {
+    gap: 13px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  h1 {
+    font-size: 62px;
+
+    letter-spacing: -3px;
+  }
+
+  .foto {
+    width: 160px;
+    height: 160px;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .education-content h2 {
+    font-size: 32px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+
+    gap: 13px;
+  }
+
+  footer {
+    padding-bottom: 25px;
+  }
+}
