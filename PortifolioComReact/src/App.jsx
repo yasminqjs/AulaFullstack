@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import foto from './assets/foto.jpg'
+
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Sobre from './components/Sobre'
+import Experiencia from './components/Experiencia'
+import Habilidades from './components/Habilidades'
+import Formacao from './components/Formacao'
+import Contato from './components/Contato'
+import Footer from './components/Footer'
 
 function App() {
   const [activeSection, setActiveSection] = useState('inicio')
@@ -55,6 +63,12 @@ function App() {
     setActiveSection(section)
   }
 
+  const handleExperienceToggle = (index) => {
+    setSelectedExperience((currentIndex) =>
+      currentIndex === index ? null : index
+    )
+  }
+
   useEffect(() => {
     const sections = document.querySelectorAll('.animate-section')
 
@@ -91,20 +105,15 @@ function App() {
   useEffect(() => {
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY
-
       const documentHeight =
         document.documentElement.scrollHeight - window.innerHeight
-
       const progress =
-        documentHeight > 0
-          ? (scrollTop / documentHeight) * 100
-          : 0
+        documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0
 
       setScrollProgress(progress)
     }
 
     window.addEventListener('scroll', updateScrollProgress)
-
     updateScrollProgress()
 
     return () => {
@@ -119,266 +128,28 @@ function App() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <header>
-        <a
-          className="logo"
-          href="#inicio"
-          onClick={() => handleNavigation('inicio')}
-        >
-          YQ
-        </a>
-
-        <nav>
-          <a
-            className={activeSection === 'sobre' ? 'active' : ''}
-            href="#sobre"
-            onClick={() => handleNavigation('sobre')}
-          >
-            Sobre
-          </a>
-
-          <a
-            className={activeSection === 'experiencia' ? 'active' : ''}
-            href="#experiencia"
-            onClick={() => handleNavigation('experiencia')}
-          >
-            Experiência
-          </a>
-
-          <a
-            className={activeSection === 'habilidades' ? 'active' : ''}
-            href="#habilidades"
-            onClick={() => handleNavigation('habilidades')}
-          >
-            Habilidades
-          </a>
-
-          <a
-            className={activeSection === 'formacao' ? 'active' : ''}
-            href="#formacao"
-            onClick={() => handleNavigation('formacao')}
-          >
-            Formação
-          </a>
-
-          <a
-            className={activeSection === 'contato' ? 'active' : ''}
-            href="#contato"
-            onClick={() => handleNavigation('contato')}
-          >
-            Contato
-          </a>
-        </nav>
-      </header>
+      <Header activeSection={activeSection} onNavigation={handleNavigation} />
 
       <main>
-        <section className="hero" id="inicio">
-          <div className="hero-text">
-            <h1>
-              Yasmin
-              <br />
-              <span>Queiroz</span>
-            </h1>
-
-            <p className="description">
-              6º Semestre | Graduanda de Engenharia da Computação na
-              Universidade SENAI CIMATEC
-              <br />
-              Estagiária na área de Eletrônica Embarcada
-            </p>
-          </div>
-
-          <div className="foto">
-            <img
-              src={foto}
-              alt="Yasmin Queiroz"
-              className="profile-photo"
-            />
-          </div>
-        </section>
-
-        <section
-          className={`section about animate-section ${
-            visibleSections.includes('sobre') ? 'visible' : ''
-          }`}
-          id="sobre"
-        >
-          <p className="section-number">01 - SOBRE</p>
-
-          <div className="text">
-            <p>
-              Atualmente estou no 6º semestre de Engenharia da Computação
-              na Universidade SENAI CIMATEC.
-            </p>
-
-            <p>
-              Minha experiência envolve desenvolvimento de software para
-              microcontroladores, utilizando C/C++, sensores, RTOS e
-              microcontroladores STM32.
-            </p>
-
-            <p>
-              Também tenho experiência com aplicações de IoT, simulações
-              de rastreamento de satélites e programação competitiva.
-            </p>
-          </div>
-        </section>
-
-        <section
-          className={`section animate-section ${
-            visibleSections.includes('experiencia') ? 'visible' : ''
-          }`}
-          id="experiencia"
-        >
-          <p className="section-number">02 - EXPERIÊNCIA</p>
-
-          <div className="experience">
-            {experiences.map((experience, index) => {
-              const isSelected = selectedExperience === index
-
-              return (
-                <article
-                  key={experience.title}
-                  className={`experience-card ${
-                    isSelected ? 'selected' : ''
-                  }`}
-                >
-                  <span className="date">
-                    {experience.date}
-                  </span>
-
-                  <div>
-                    <h3>{experience.title}</h3>
-
-                    <p className="company">
-                      {experience.company}
-                    </p>
-
-                    <p>{experience.description}</p>
-
-                    <button
-                      className="experience-button"
-                      onClick={() =>
-                        setSelectedExperience(
-                          isSelected ? null : index
-                        )
-                      }
-                    >
-                      {isSelected
-                        ? 'Mostrar menos −'
-                        : 'Ver mais +'}
-                    </button>
-
-                    <div
-                      className={`experience-extra ${
-                        isSelected ? 'show' : ''
-                      }`}
-                    >
-                      <p>{experience.extra}</p>
-                    </div>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
-        </section>
-
-        <section
-          className={`section skills animate-section ${
-            visibleSections.includes('habilidades') ? 'visible' : ''
-          }`}
-          id="habilidades"
-        >
-          <p className="section-number">03 - HABILIDADES</p>
-
-          <div className="skill-controls">
-            <button
-              className={`skill-control ${
-                skillView === 'compact' ? 'active' : ''
-              }`}
-              onClick={() => setSkillView('compact')}
-            >
-              Lista
-            </button>
-
-            <button
-              className={`skill-control ${
-                skillView === 'cards' ? 'active' : ''
-              }`}
-              onClick={() => setSkillView('cards')}
-            >
-              Cards
-            </button>
-          </div>
-
-          <div className={`skill-list ${skillView}`}>
-            {skills.map((skill, index) => (
-              <span
-                key={skill}
-                style={{
-                  animationDelay: `${index * 0.05}s`,
-                }}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        <section
-          className={`section education animate-section ${
-            visibleSections.includes('formacao') ? 'visible' : ''
-          }`}
-          id="formacao"
-        >
-          <p className="section-number">04 - FORMAÇÃO</p>
-
-          <div className="education-content">
-            <div>
-              <p className="small">2024 - 2029</p>
-
-              <h2>Engenharia da Computação</h2>
-
-              <p className="institution">
-                Universidade SENAI CIMATEC
-              </p>
-            </div>
-
-            <p className="semester">6º semestre</p>
-          </div>
-        </section>
-
-        <section
-          className={`contact animate-section ${
-            visibleSections.includes('contato') ? 'visible' : ''
-          }`}
-          id="contato"
-        >
-          <p className="section-number">05 - CONTATO</p>
-
-          <div className="contact-info">
-            <a
-              className="linkedin-button"
-              href="mailto:yasminqjs@gmail.com"
-            >
-              yasminqjs@gmail.com
-            </a>
-
-            <a
-              className="linkedin-button"
-              href="https://www.linkedin.com/in/yasmin-queiroz-04743630b/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </section>
+        <Hero />
+        <Sobre visibleSections={visibleSections} />
+        <Experiencia
+          experiences={experiences}
+          selectedExperience={selectedExperience}
+          visibleSections={visibleSections}
+          onToggleExperience={handleExperienceToggle}
+        />
+        <Habilidades
+          skills={skills}
+          skillView={skillView}
+          visibleSections={visibleSections}
+          onSkillViewChange={setSkillView}
+        />
+        <Formacao visibleSections={visibleSections} />
+        <Contato visibleSections={visibleSections} />
       </main>
 
-      <footer>
-        <span>Salvador, Bahia, Brasil</span>
-      </footer>
+      <Footer />
     </>
   )
 }
