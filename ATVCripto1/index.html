@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratório didático para gerar e comparar hashes SHA-256 no navegador.">
+  <link rel="stylesheet" href="style.css">
+  <title>Atividade de Fullstack: Cripto 1</title>
+</head>
+<body>
+  <a class="pular" href="#principal">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <h1>Atividade de Fullstack: Cripto 1</h1>
+  </header>
+
+  <main id="principal">
+
+    <!-- ETAPAS 1 a 5: gerar o hash -->
+    <section aria-labelledby="t-gerar">
+      <h2 id="t-gerar">1. Gerar hash</h2>
+
+      <label for="entrada">Digite uma informação</label>
+      <input id="entrada" type="text" autocomplete="off" spellcheck="false" aria-describedby="contador">
+      <p id="contador" class="ajuda">0 caracteres</p>
+
+      <div class="acoes">
+        <button id="gerar" type="button">Gerar SHA-256</button>
+        <button id="copiar" type="button" class="secundario">Copiar hash</button>
+        <button id="limpar" type="button" class="secundario">Limpar</button>
+      </div>
+
+      <p id="status-geral" class="mensagem" role="status"></p>
+
+      <dl class="resultado">
+        <dt>Dado original</dt>
+        <dd id="saida-original">—</dd>
+        <dt>SHA-256 em hexadecimal</dt>
+        <dd id="saida-hash" class="mono">—</dd>
+      </dl>
+      <p id="detalhes-hash" class="ajuda"></p>
+    </section>
+
+    <!-- ETAPA 10: problema final (verificação de integridade) -->
+    <section aria-labelledby="t-verificar">
+      <h2 id="t-verificar">2. Verificar integridade</h2>
+      <p>O hash gerado acima é guardado como <strong>referência</strong>. Informe o dado novamente: se algo mudou, mesmo que seja um único caractere, os hashes serão diferentes.</p>
+      <p id="aviso-referencia" class="ajuda">Ainda não há hash de referência. Gere um hash na seção 1.</p>
+
+      <label for="nova-entrada">Informe o dado novamente</label>
+      <input id="nova-entrada" type="text" autocomplete="off" spellcheck="false">
+
+      <div class="acoes">
+        <button id="verificar" type="button">Gerar novo hash e comparar</button>
+      </div>
+
+      <p id="status-verificacao" class="mensagem" role="status"></p>
+
+      <div id="painel-verificacao" class="painel" hidden>
+        <p id="resultado-verificacao" class="veredito"></p>
+        <dl class="resultado">
+          <dt>Hash de referência</dt>
+          <dd id="verif-referencia" class="mono">—</dd>
+          <dt>Novo hash</dt>
+          <dd id="verif-novo" class="mono">—</dd>
+        </dl>
+        <p id="detalhes-verificacao" class="ajuda"></p>
+      </div>
+    </section>
+
+    <!-- ETAPA 7: comparação de dois dados -->
+    <section aria-labelledby="t-comparar">
+      <h2 id="t-comparar">3. Comparar dois dados</h2>
+      <p>Compara apenas o resultado final, sem exibir os dados nem os hashes.</p>
+
+      <label for="dado1">Dado 1</label>
+      <input id="dado1" type="text" autocomplete="off" spellcheck="false">
+      <label for="dado2">Dado 2</label>
+      <input id="dado2" type="text" autocomplete="off" spellcheck="false">
+
+      <div class="acoes">
+        <button id="comparar" type="button">Comparar</button>
+      </div>
+
+      <p id="resultado-comparacao" class="mensagem" role="status"></p>
+    </section>
+
+    <!-- ETAPA 6: experimento e efeito avalanche -->
+    <section aria-labelledby="t-experimento">
+      <h2 id="t-experimento">4. Experimento: efeito avalanche</h2>
+      <p>Alterações mínimas na entrada geram hashes totalmente diferentes. Use <em>Testar</em> para enviar uma entrada ao laboratório.</p>
+
+      <div class="tabela-rolavel">
+        <table>
+          <caption class="so-leitor">SHA-256 de entradas parecidas</caption>
+          <thead>
+            <tr><th scope="col">Entrada</th><th scope="col">SHA-256</th><th scope="col">Ação</th></tr>
+          </thead>
+          <tbody id="tabela-experimento"></tbody>
+        </table>
+      </div>
+
+      <h3>Quanto mudou?</h3>
+      <ul id="avalanche" class="lista-simples"></ul>
+    </section>
+
+    <!-- ETAPA 9: segurança -->
+    <section aria-labelledby="t-seguranca">
+      <h2 id="t-seguranca">5. Segurança: hash não é criptografia</h2>
+
+      <div class="tabela-rolavel">
+        <table>
+          <caption class="so-leitor">Hash comparado com criptografia</caption>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Hash (SHA-256)</th><th scope="col">Criptografia</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Objetivo</th><td>Verificar integridade</td><td>Proteger sigilo</td></tr>
+            <tr><th scope="row">Reversível?</th><td>Não: não existe "descriptografar"</td><td>Sim, com a chave correta</td></tr>
+            <tr><th scope="row">Usa chave?</th><td>Não</td><td>Sim</td></tr>
+            <tr><th scope="row">Tamanho da saída</th><td>Sempre 256 bits (64 caracteres hexadecimais)</td><td>Cresce com o tamanho do dado</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="lista-simples">
+        <li><strong>Integridade, não autoria:</strong> se alguém alterar o dado e o hash, a comparação não percebe. Para provar quem enviou, usam-se HMAC ou assinatura digital.</li>
+        <li><strong>Senhas:</strong> não use SHA-256 puro. Ele é muito rápido, o que facilita ataques de tentativa e erro, e a mesma senha sempre gera o mesmo hash. Use algoritmos próprios para senhas, como Argon2id, com salt.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
