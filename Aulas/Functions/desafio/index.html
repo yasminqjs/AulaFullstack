@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios JS 2</title>
+</head>
+<body>
+    <h1>Exercícios de Funções JavaScript</h1>
+
+    <section>
+        <h3>1. Calcular IMC</h3>
+        <input type="number" id="inputPeso" placeholder="Peso (kg)" step="0.1">
+        <input type="number" id="inputAltura" placeholder="Altura (m)" step="0.01">
+        <button onclick="getCalcularIMC()">Calcular</button>
+    </section>
+
+    <section>
+        <h3>2. Calcular Conta</h3>
+        <input type="number" id="inputConsumo" placeholder="Consumo (kWh)">
+        <input type="number" id="inputTarifa" placeholder="Tarifa (R$)" step="0.01">
+        <button onclick="getCalcularConta()">Calcular</button>
+    </section>
+
+    <section>
+        <h3>3. Contar Pares</h3>
+        <input type="number" id="inputNumeros" placeholder="Quantidade de números">
+        <button onclick="getContarPares()">Contar</button>
+    </section>
+
+    <section>
+        <h3>4. Cadastrar Aluno</h3>
+        <input type="text" id="inputNome" placeholder="Nome do aluno">
+        <input type="text" id="inputCurso" placeholder="Curso">
+        <input type="number" id="inputNota1" placeholder="Nota 1" step="0.1">
+        <input type="number" id="inputNota2" placeholder="Nota 2" step="0.1">
+        <input type="number" id="inputNota3" placeholder="Nota 3" step="0.1">
+        <button onclick="getCadastrarAluno()">Cadastrar</button>
+    </section>
+
+    <section>
+        <h3>5. Calcular Operação</h3>
+        <input type="number" id="inputN1" placeholder="Número 1">
+        <input type="number" id="inputN2" placeholder="Número 2">
+        <select id="inputOperacao">
+            <option value="soma">Soma</option>
+            <option value="subtracao">Subtração</option>
+            <option value="multiplicacao">Multiplicação</option>
+            <option value="divisao">Divisão</option>
+        </select>
+        <button onclick="getCalcularOperacao()">Calcular</button>
+    </section>
+
+    <script src="functions.js"></script>
+</body>
+</html>
