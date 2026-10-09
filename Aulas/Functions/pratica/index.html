@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Aula Funções JS</title>
+</head>
+<body>
+    <h1>Atividade Prática de Funções JavaScript</h1>
+
+    <section>
+        <h3>1. Mostrar nome</h3>
+        <button onclick="mostrarNome()">Mostrar nome (console)</button>
+    </section>
+
+    <section>
+        <h3>2. Receber nome</h3>
+        <input type="text" id="inputNome" placeholder="Digite seu nome">
+        <button onclick="getReceberNome()">Enviar</button>
+    </section>
+
+    <section>
+        <h3>3. Calcular área</h3>
+        <input type="number" id="inputBase" placeholder="Base">
+        <input type="number" id="inputAltura" placeholder="Altura">
+        <button onclick="getCalcularArea()">Calcular</button>
+    </section>
+
+    <section>
+        <h3>4. Verificar aprovação</h3>
+        <input type="number" id="inputMedia" placeholder="Média" step="0.1">
+        <button onclick="getVerificarAprovacao()">Verificar</button>
+    </section>
+
+    <section>
+        <h3>5. Converter Fahrenheit em Celsius</h3>
+        <input type="number" id="inputFahrenheit" placeholder="Fahrenheit">
+        <button onclick="getConverterCelsius()">Converter</button>
+    </section>
+
+    <section>
+        <h3>6. Trocar cor de fundo</h3>
+        <button onclick="mudarCor('lightblue')">Azul</button>
+        <button onclick="mudarCor('lightgreen')">Verde</button>
+        <button onclick="mudarCor('salmon')">Vermelho</button>
+    </section>
+
+    <script src="functions.js"></script>
+</body>
+</html>
